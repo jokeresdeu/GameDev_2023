@@ -1,0 +1,538 @@
+
+Walker_1_Level.png
+size: 680,680
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Walker_Iron_Bucket_1/Bat
+  rotate: false
+  xy: 2, 393
+  size: 258, 282
+  orig: 258, 282
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/Bat
+  rotate: false
+  xy: 2, 393
+  size: 258, 282
+  orig: 258, 282
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Bat
+  rotate: false
+  xy: 2, 393
+  size: 258, 282
+  orig: 258, 282
+  offset: 0, 0
+  index: -1
+Walker_Standart/Bat
+  rotate: false
+  xy: 2, 393
+  size: 258, 282
+  orig: 258, 282
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Bat
+  rotate: false
+  xy: 2, 393
+  size: 258, 282
+  orig: 258, 282
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Bat
+  rotate: false
+  xy: 2, 393
+  size: 258, 282
+  orig: 258, 282
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_1/Body
+  rotate: true
+  xy: 315, 393
+  size: 67, 82
+  orig: 67, 82
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/Body
+  rotate: true
+  xy: 315, 393
+  size: 67, 82
+  orig: 67, 82
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Body
+  rotate: true
+  xy: 315, 393
+  size: 67, 82
+  orig: 67, 82
+  offset: 0, 0
+  index: -1
+Walker_Standart/Body
+  rotate: true
+  xy: 315, 393
+  size: 67, 82
+  orig: 67, 82
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Body
+  rotate: true
+  xy: 315, 393
+  size: 67, 82
+  orig: 67, 82
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Body
+  rotate: true
+  xy: 315, 393
+  size: 67, 82
+  orig: 67, 82
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_1/Botle
+  rotate: false
+  xy: 262, 462
+  size: 87, 52
+  orig: 87, 52
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/Botle
+  rotate: false
+  xy: 262, 462
+  size: 87, 52
+  orig: 87, 52
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Botle
+  rotate: false
+  xy: 262, 462
+  size: 87, 52
+  orig: 87, 52
+  offset: 0, 0
+  index: -1
+Walker_Standart/Botle
+  rotate: false
+  xy: 262, 462
+  size: 87, 52
+  orig: 87, 52
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Botle
+  rotate: false
+  xy: 262, 462
+  size: 87, 52
+  orig: 87, 52
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Botle
+  rotate: false
+  xy: 262, 462
+  size: 87, 52
+  orig: 87, 52
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_1/Buckground_Iron_Bucket_1
+  rotate: true
+  xy: 461, 516
+  size: 159, 170
+  orig: 159, 170
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_1/Hand_1_L
+  rotate: false
+  xy: 633, 641
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/Hand_1_L
+  rotate: false
+  xy: 633, 641
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Hand_1_L
+  rotate: false
+  xy: 633, 641
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Walker_Standart/Hand_1_L
+  rotate: false
+  xy: 633, 641
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Hand_1_L
+  rotate: false
+  xy: 633, 641
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Hand_1_L
+  rotate: false
+  xy: 633, 641
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_1/Hand_1_R
+  rotate: false
+  xy: 633, 605
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/Hand_1_R
+  rotate: false
+  xy: 633, 605
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Hand_1_R
+  rotate: false
+  xy: 633, 605
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Walker_Standart/Hand_1_R
+  rotate: false
+  xy: 633, 605
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Hand_1_R
+  rotate: false
+  xy: 633, 605
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Hand_1_R
+  rotate: false
+  xy: 633, 605
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_1/Hand_2_L
+  rotate: false
+  xy: 262, 394
+  size: 51, 61
+  orig: 51, 61
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/Hand_2_L
+  rotate: false
+  xy: 262, 394
+  size: 51, 61
+  orig: 51, 61
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Hand_2_L
+  rotate: false
+  xy: 262, 394
+  size: 51, 61
+  orig: 51, 61
+  offset: 0, 0
+  index: -1
+Walker_Standart/Hand_2_L
+  rotate: false
+  xy: 262, 394
+  size: 51, 61
+  orig: 51, 61
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Hand_2_L
+  rotate: false
+  xy: 262, 394
+  size: 51, 61
+  orig: 51, 61
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Hand_2_L
+  rotate: false
+  xy: 262, 394
+  size: 51, 61
+  orig: 51, 61
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_1/Hand_2_R
+  rotate: true
+  xy: 351, 465
+  size: 49, 63
+  orig: 49, 63
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/Hand_2_R
+  rotate: true
+  xy: 351, 465
+  size: 49, 63
+  orig: 49, 63
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Hand_2_R
+  rotate: true
+  xy: 351, 465
+  size: 49, 63
+  orig: 49, 63
+  offset: 0, 0
+  index: -1
+Walker_Standart/Hand_2_R
+  rotate: true
+  xy: 351, 465
+  size: 49, 63
+  orig: 49, 63
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Hand_2_R
+  rotate: true
+  xy: 351, 465
+  size: 49, 63
+  orig: 49, 63
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Hand_2_R
+  rotate: true
+  xy: 351, 465
+  size: 49, 63
+  orig: 49, 63
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_1/Head
+  rotate: true
+  xy: 479, 96
+  size: 130, 134
+  orig: 130, 134
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/Head
+  rotate: true
+  xy: 479, 96
+  size: 130, 134
+  orig: 130, 134
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Head
+  rotate: true
+  xy: 479, 96
+  size: 130, 134
+  orig: 130, 134
+  offset: 0, 0
+  index: -1
+Walker_Standart/Head
+  rotate: true
+  xy: 479, 96
+  size: 130, 134
+  orig: 130, 134
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Head
+  rotate: true
+  xy: 479, 96
+  size: 130, 134
+  orig: 130, 134
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Head
+  rotate: true
+  xy: 479, 96
+  size: 130, 134
+  orig: 130, 134
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_1/Iron_Bucket_1
+  rotate: false
+  xy: 2, 192
+  size: 162, 199
+  orig: 162, 199
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_1/Leg_L
+  rotate: false
+  xy: 633, 531
+  size: 41, 72
+  orig: 41, 72
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/Leg_L
+  rotate: false
+  xy: 633, 531
+  size: 41, 72
+  orig: 41, 72
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Leg_L
+  rotate: false
+  xy: 633, 531
+  size: 41, 72
+  orig: 41, 72
+  offset: 0, 0
+  index: -1
+Walker_Standart/Leg_L
+  rotate: false
+  xy: 633, 531
+  size: 41, 72
+  orig: 41, 72
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Leg_L
+  rotate: false
+  xy: 633, 531
+  size: 41, 72
+  orig: 41, 72
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Leg_L
+  rotate: false
+  xy: 633, 531
+  size: 41, 72
+  orig: 41, 72
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_1/Leg_R
+  rotate: false
+  xy: 633, 457
+  size: 41, 72
+  orig: 41, 72
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/Leg_R
+  rotate: false
+  xy: 633, 457
+  size: 41, 72
+  orig: 41, 72
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Leg_R
+  rotate: false
+  xy: 633, 457
+  size: 41, 72
+  orig: 41, 72
+  offset: 0, 0
+  index: -1
+Walker_Standart/Leg_R
+  rotate: false
+  xy: 633, 457
+  size: 41, 72
+  orig: 41, 72
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Leg_R
+  rotate: false
+  xy: 633, 457
+  size: 41, 72
+  orig: 41, 72
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Leg_R
+  rotate: false
+  xy: 633, 457
+  size: 41, 72
+  orig: 41, 72
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_1/V
+  rotate: false
+  xy: 424, 612
+  size: 29, 28
+  orig: 29, 28
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/V
+  rotate: false
+  xy: 424, 612
+  size: 29, 28
+  orig: 29, 28
+  offset: 0, 0
+  index: -1
+Walker_Standart/V
+  rotate: false
+  xy: 424, 612
+  size: 29, 28
+  orig: 29, 28
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/Buckground_Iron_Bucket_2
+  rotate: true
+  xy: 262, 516
+  size: 159, 160
+  orig: 159, 160
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_2/Iron_Bucket_2
+  rotate: false
+  xy: 166, 194
+  size: 162, 197
+  orig: 162, 197
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Buckground_Iron_Bucket_3
+  rotate: false
+  xy: 479, 228
+  size: 154, 137
+  orig: 154, 137
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Iron_Bucket_3
+  rotate: false
+  xy: 2, 11
+  size: 157, 179
+  orig: 157, 179
+  offset: 0, 0
+  index: -1
+Walker_Iron_Bucket_3/Z
+  rotate: false
+  xy: 424, 642
+  size: 34, 33
+  orig: 34, 33
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Z
+  rotate: false
+  xy: 424, 642
+  size: 34, 33
+  orig: 34, 33
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Z
+  rotate: false
+  xy: 424, 642
+  size: 34, 33
+  orig: 34, 33
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Buckground_Wood_Bucket_1
+  rotate: false
+  xy: 161, 15
+  size: 148, 175
+  orig: 148, 175
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_1/Wood_Bucket_1
+  rotate: true
+  xy: 461, 367
+  size: 147, 156
+  orig: 147, 156
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Buckground_Wood_Bucket_2
+  rotate: false
+  xy: 311, 17
+  size: 148, 175
+  orig: 148, 175
+  offset: 0, 0
+  index: -1
+Walker_Wood_Bucket_2/Wood_Bucket_2
+  rotate: false
+  xy: 330, 209
+  size: 147, 156
+  orig: 147, 156
+  offset: 0, 0
+  index: -1
