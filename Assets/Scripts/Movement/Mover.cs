@@ -1,3 +1,4 @@
+using Animation;
 using UnityEngine;
 
 namespace Movement
@@ -23,7 +24,7 @@ namespace Movement
 
         [Header("Animation")] 
         [SerializeField] private Animator _animator;
-        private AnimationState _currentState;
+        private AnimationType _currentType;
         private string _animatorParameterName;
 
         private Rigidbody2D _rigidbody2D;
@@ -74,29 +75,29 @@ namespace Movement
                 SetDirection();
             }
 
-            PlayAnimation(AnimationState.Jump, !isGrounded && _rigidbody2D.velocity.y > 0);
-            PlayAnimation(AnimationState.Fall, !isGrounded && _rigidbody2D.velocity.y < 0);
-            PlayAnimation(AnimationState.Crouch, !_boxCollider2D.enabled);
+            PlayAnimation(AnimationType.Jump, !isGrounded && _rigidbody2D.velocity.y > 0);
+            PlayAnimation(AnimationType.Fall, !isGrounded && _rigidbody2D.velocity.y < 0);
+            PlayAnimation(AnimationType.Crouch, !_boxCollider2D.enabled);
         }
         
-        private void PlayAnimation(AnimationState animationState, bool active)
+        private void PlayAnimation(AnimationType animationType, bool active)
         {
-            if (animationState < _currentState)
+            if (animationType < _currentType)
                 return;
 
             if (!active)
             {
-                if (animationState == _currentState)
+                if (animationType == _currentType)
                 {
-                    _animator.SetInteger( _animatorParameterName, (int)AnimationState.Idle);
-                    _currentState = AnimationState.Idle;
+                    _animator.SetInteger( _animatorParameterName, (int)AnimationType.Idle);
+                    _currentType = AnimationType.Idle;
                 }
                 
                 return;
             }
 
-            _animator.SetInteger( _animatorParameterName, (int)animationState);
-            _currentState = animationState;
+            _animator.SetInteger( _animatorParameterName, (int)animationType);
+            _currentType = animationType;
         }
 
         private void SetDirection()
@@ -111,15 +112,6 @@ namespace Movement
         {
             _faceRight = !_faceRight;
             transform.Rotate(0, 180, 0);
-        }
-
-        private enum AnimationState
-        {
-            Idle = 0,
-            Run = 1,
-            Jump = 2,
-            Fall = 3,
-            Crouch = 4,
         }
     }
 }
