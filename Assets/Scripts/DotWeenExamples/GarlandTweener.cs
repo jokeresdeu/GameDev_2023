@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace DotWeenExamples
 {
-    public class GarlandTweener : MonoBehaviour
+    public class  GarlandTweener : MonoBehaviour
     {
         [SerializeField] private List<SpriteRenderer> _elements;
         [SerializeField] private List<Color> _colors;
