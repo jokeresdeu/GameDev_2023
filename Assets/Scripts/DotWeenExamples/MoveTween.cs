@@ -6,34 +6,32 @@ namespace DotWeenExamples
 {
     public class MoveTween : MonoBehaviour
     {
-        [SerializeField] private Transform _endPoint;
-        [SerializeField] private float _minSpeed;
+      
         [SerializeField] private float _maxSpeed;
-        [SerializeField] private SkeletonAnimation _skeleton;
-        [SpineAnimation, SerializeField] private string _deathAnimation;
+
+        private Camera _camera;
+
+        private Tweener _moveTweener;
         
         private void Start()
         {
-            float distance = Mathf.Abs(transform.position.x - _endPoint.position.x);
-            float time = distance / Random.Range(_minSpeed, _maxSpeed);
-            var tweener = transform.DOMoveX(_endPoint.position.x, time).SetEase(Ease.Linear);
-            tweener.OnStepComplete(Rotate);
-            tweener.SetLoops(-1, LoopType.Yoyo);
+            _camera = Camera.main;
+        }
+
+        private void Update()
+        {
+            if (!Input.GetButtonDown("Fire1"))
+            {
+                return;
+            } 
             
-            /*var endPos = new Vector2(_endPoint.position.x, transform.position.y);
-            var distance = Vector2.Distance(transform.position, endPos);
-            var time = distance / Random.Range(_minSpeed, _maxSpeed);
-            transform.DOMove(endPos, time).SetEase(Ease.Linear).OnComplete(Die);*/
-        }
+            
+            Vector3 postion =  _camera.ScreenToWorldPoint(Input.mousePosition);
+            postion.z = 0;
+            float time = Vector2.Distance(transform.position, postion) / _maxSpeed;
 
-        private void Die()
-        {
-            _skeleton.AnimationState.SetAnimation(0, _deathAnimation, false);
-        }
-
-        private void Rotate()
-        {
-            transform.Rotate(0, 180, 0);
+            _moveTweener?.Kill();
+            _moveTweener = transform.DOMove(postion, time).SetEase(Ease.InOutCubic);
         }
     }
 }

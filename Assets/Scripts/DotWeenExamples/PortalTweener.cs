@@ -30,6 +30,11 @@ namespace DotWeenExamples
         
         private void Start()
         {
+            GetPortalSequence().Prepend(_portal.DOScale(Vector3.one, 1f));
+        }
+
+        private Sequence GetPortalSequence()
+        {
             var portalOpenSize = _portal.transform.localScale;
             _portal.transform.localScale = new Vector3(0, portalOpenSize.y, 0);
             var rayOpenSize = _ray.transform.localScale;
@@ -42,11 +47,12 @@ namespace DotWeenExamples
             moveUpSequence.Join(_fox.DOMove(_behindPortalPoint.position, _foxUpTime).SetEase(_upEase));
             moveUpSequence.Join(_fox.DORotate(_rotationAngle, _foxUpTime).SetEase(_upEase));
             sequence.Append(moveUpSequence);
-            
+
             sequence.Append(_ray.DOScale(new Vector3(rayOpenSize.x, 0, 0), _showRayTime).SetEase(_rayHideSequence));
             sequence.Append(_portal.DOScale(new Vector3(0, portalOpenSize.y, 0), _portalOpenTime).SetEase(_portalCloseSequence));
             sequence.SetLoops(-1);
             sequence.timeScale = _sequenceFloatTime;
+            return sequence;
         }
     }
 }
