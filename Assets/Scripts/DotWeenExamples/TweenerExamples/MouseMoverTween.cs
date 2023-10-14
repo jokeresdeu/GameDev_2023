@@ -8,6 +8,7 @@ namespace DotWeenExamples.TweenerExamples
         [SerializeField] private float _speed;
 
         private Camera _camera;
+        private Tweener _moveTweener;
 
         private void Start()
         {
@@ -22,7 +23,8 @@ namespace DotWeenExamples.TweenerExamples
             var position = _camera.ScreenToWorldPoint(Input.mousePosition);
             var time = Vector2.Distance(position, transform.position) / _speed;
             position.z = 0;
-            transform.DOMove(position, time);
+            _moveTweener?.Kill();
+            _moveTweener = transform.DOMove(position, time).SetEase(Ease.Linear);
         }
     }
 }

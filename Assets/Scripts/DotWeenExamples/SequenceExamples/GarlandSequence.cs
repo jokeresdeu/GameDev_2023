@@ -11,23 +11,19 @@ namespace DotWeenExamples.SequenceExamples
         [SerializeField] private List<Color> _colors;
         [SerializeField] private float _elementTime;
 
-        private void Start() => PlayGarlandSequence(false);
+        private void Start() => PlayGarlandSequence();
 
-        private void PlayGarlandSequence(bool backWards)
+        private void PlayGarlandSequence()
         {
-            OneWayGarlandSequence(backWards).onComplete += () =>
-            {
-                PlayGarlandSequence(!backWards);
-            };
+            OneWayGarlandSequence().onComplete += PlayGarlandSequence;
         }
 
-        private Sequence OneWayGarlandSequence(bool backWards)
+        private Sequence OneWayGarlandSequence()
         {
             var color = _colors[Random.Range(0, _colors.Count)];
             var sequence = DOTween.Sequence();
             foreach (var element in _elements)
                 sequence.Append(GetColorChangeTween(element, color));
-            sequence.isBackwards = backWards;
             return sequence;
         }
 

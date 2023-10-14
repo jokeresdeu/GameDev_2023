@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Spine.Unity;
 using UnityEngine;
 
@@ -12,7 +13,9 @@ namespace DotWeenExamples.TweenerExamples
         
         private void Start()
         {
-            
+            float time = Mathf.Abs(transform.position.x - _endPoint.position.x) / _speed;
+            Tweener tweener = transform.DOMoveX(_endPoint.position.x, time).SetEase(Ease.Linear);
+            tweener.OnComplete(Die);
         }
 
         private void Die()

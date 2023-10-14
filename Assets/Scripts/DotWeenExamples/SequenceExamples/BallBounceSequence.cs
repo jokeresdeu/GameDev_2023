@@ -17,8 +17,6 @@ namespace DotWeenExamples.SequenceExamples
         {
             var originalSize = _ball.transform.localScale;
             Sequence sequence = BounceSequence();
-            sequence.Prepend(_ball.DOScale(originalSize, 0.2f));
-            sequence.Prepend(_ball.transform.DOScale(Vector3.one, 0.2f));
         }
 
         private Sequence BounceSequence()

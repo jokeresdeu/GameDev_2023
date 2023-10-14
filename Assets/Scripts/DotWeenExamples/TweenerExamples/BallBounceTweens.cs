@@ -32,7 +32,7 @@ namespace DotWeenExamples.TweenerExamples
         
         private void UnSqueeze()
         {
-            _ball.DOScale(Vector3.one, _scaleTime).SetEase(Ease.OutQuart).OnComplete(MoveUp);
+            _ball.DOScale(Vector3.one, _scaleTime).SetEase(Ease.InQuart).OnComplete(MoveUp);
         }
         
         private void MoveUp()
