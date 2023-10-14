@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DotWeenExamples
 {
-    public class PortalTweener : MonoBehaviour
+    public class PortalSequence : MonoBehaviour
     {
         [SerializeField] private float _sequenceFloatTime;
         

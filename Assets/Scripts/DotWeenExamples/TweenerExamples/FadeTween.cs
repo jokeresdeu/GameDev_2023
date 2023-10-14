@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace DotWeenExamples
+namespace DotWeenExamples.TweenerExamples
 {
     public class FadeTween : MonoBehaviour
     {

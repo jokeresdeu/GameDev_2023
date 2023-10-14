@@ -3,9 +3,9 @@ using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace DotWeenExamples
+namespace DotWeenExamples.SequenceExamples
 {
-    public class  GarlandTweener : MonoBehaviour
+    public class  GarlandSequence : MonoBehaviour
     {
         [SerializeField] private List<SpriteRenderer> _elements;
         [SerializeField] private List<Color> _colors;
@@ -15,19 +15,19 @@ namespace DotWeenExamples
 
         private void PlayGarlandSequence(bool backWards)
         {
-            OneWayGarlandSequence().isBackwards = backWards;
-            OneWayGarlandSequence().onComplete += () =>
+            OneWayGarlandSequence(backWards).onComplete += () =>
             {
                 PlayGarlandSequence(!backWards);
             };
         }
 
-        private Sequence OneWayGarlandSequence()
+        private Sequence OneWayGarlandSequence(bool backWards)
         {
             var color = _colors[Random.Range(0, _colors.Count)];
             var sequence = DOTween.Sequence();
             foreach (var element in _elements)
                 sequence.Append(GetColorChangeTween(element, color));
+            sequence.isBackwards = backWards;
             return sequence;
         }
 
