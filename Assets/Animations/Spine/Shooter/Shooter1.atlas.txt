@@ -1,0 +1,125 @@
+
+Shooter1.png
+size: 392,206
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: false
+  xy: 78, 12
+  size: 76, 80
+  orig: 76, 80
+  offset: 0, 0
+  index: -1
+Hand_1_L
+  rotate: false
+  xy: 346, 3
+  size: 36, 25
+  orig: 36, 25
+  offset: 0, 0
+  index: -1
+Hand_1_R
+  rotate: false
+  xy: 346, 30
+  size: 44, 32
+  orig: 44, 32
+  offset: 0, 0
+  index: -1
+Hand_2_R
+  rotate: false
+  xy: 226, 2
+  size: 60, 33
+  orig: 60, 33
+  offset: 0, 0
+  index: -1
+Hand_3_R
+  rotate: true
+  xy: 330, 98
+  size: 39, 46
+  orig: 39, 46
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 78, 94
+  size: 109, 110
+  orig: 109, 110
+  offset: 0, 0
+  index: -1
+Leg_1_L
+  rotate: true
+  xy: 306, 139
+  size: 65, 34
+  orig: 65, 34
+  offset: 0, 0
+  index: -1
+Leg_1_R
+  rotate: false
+  xy: 330, 64
+  size: 47, 32
+  orig: 47, 32
+  offset: 0, 0
+  index: -1
+Leg_2_L
+  rotate: false
+  xy: 283, 56
+  size: 45, 76
+  orig: 45, 76
+  offset: 0, 0
+  index: -1
+Leg_2_R
+  rotate: false
+  xy: 248, 134
+  size: 56, 70
+  orig: 56, 70
+  offset: 0, 0
+  index: -1
+Leg_3_L
+  rotate: false
+  xy: 189, 114
+  size: 57, 90
+  orig: 57, 90
+  offset: 0, 0
+  index: -1
+Leg_3_R
+  rotate: false
+  xy: 156, 4
+  size: 68, 88
+  orig: 68, 88
+  offset: 0, 0
+  index: -1
+Rifle
+  rotate: true
+  xy: 2, 13
+  size: 191, 74
+  orig: 191, 74
+  offset: 0, 0
+  index: -1
+bandage1
+  rotate: false
+  xy: 342, 142
+  size: 37, 24
+  orig: 37, 24
+  offset: 0, 0
+  index: -1
+fire1
+  rotate: true
+  xy: 342, 168
+  size: 36, 37
+  orig: 36, 37
+  offset: 0, 0
+  index: -1
+fire2
+  rotate: false
+  xy: 288, 8
+  size: 56, 46
+  orig: 56, 46
+  offset: 0, 0
+  index: -1
+fire3
+  rotate: true
+  xy: 226, 37
+  size: 75, 55
+  orig: 75, 55
+  offset: 0, 0
+  index: -1
