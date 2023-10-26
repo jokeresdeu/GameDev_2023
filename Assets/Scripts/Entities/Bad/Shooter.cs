@@ -1,6 +1,5 @@
 using System;
 using Animation;
-using Entities.Perfect;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
@@ -8,32 +7,42 @@ using Event = Spine.Event;
 
 namespace Entities.Bad
 {
-    public class Shooter : MonoBehaviour, IDamageable
+    public class Shooter : MonoBehaviour
     {
-        [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private Transform _shootPoint;
+        [SerializeField] private Bullet _bullet;
         [SerializeField] private LayerMask _target;
         [SerializeField] private float _range;
         [SerializeField] private int _hp;
-
+        
         [SerializeField] private SkeletonAnimation _skeletonAnimation;
         [SerializeField, SpineAnimation] private string _attackAnimation;
         [SerializeField, SpineAnimation] private string _idleAnimation;
         [SerializeField, SpineEvent] private string _attackEvent;
-
-        private Vector2 _endReach;
+        
         private TrackEntry _currentTrack;
         
         private AnimationType _currentAnimationType;
 
         private void Start()
         {
-            _endReach = new Vector2(_shootPoint.position.x + _range, _shootPoint.position.y);
             _skeletonAnimation.AnimationState.Event += OnAnimationEvent;
         }
 
-        private void Update() => SetAnimationState(AnimationType.Action, EnemyInReach());
+        private void FixedUpdate() => SetAnimationState(AnimationType.Action, EnemyInRange(), true);
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawLine(_shootPoint.position, _shootPoint.position + new Vector3(_range, 0, 0));
+        }
         
+        public void TakeDamage(int damage)
+        {
+            _hp -= damage;
+            if (_hp <= 0)
+                Destroy(gameObject);
+        }
+
         #region Animation
         
         private string GetAnimationName(AnimationType animationType)
@@ -84,27 +93,20 @@ namespace Entities.Bad
         
         private void OnAnimationEvent(TrackEntry _, Event e)
         {
-            if(e.Data.Name == _attackEvent)
+            if (e.Data.Name == _attackEvent)
                 Shoot();
         }
         
         #endregion
 
-        public void TakeDamage(int damage)
-        {
-            _hp -= damage;
-            if(_hp <= 0)
-                Destroy(gameObject);
-        }
-
         private void Shoot()
         {
-            Bullet bullet =  Instantiate(_bulletPrefab, transform);
+            Bullet bullet = Instantiate(_bullet, transform);
             bullet.transform.position = _shootPoint.position;
-            bullet.MoveTo(_endReach);
+            bullet.MoveTo(_shootPoint.position + Vector3.right * _range);
         }
 
-        private bool EnemyInReach() => Physics2D.OverlapArea(_shootPoint.position, _endReach, _target);
-        
+        private bool EnemyInRange() => 
+            Physics2D.Raycast(_shootPoint.position, Vector2.right, _range, _target);
     }
 }

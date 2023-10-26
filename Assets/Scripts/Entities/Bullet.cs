@@ -1,14 +1,13 @@
 using DG.Tweening;
-using Entities.Perfect;
+using Entities.Bad;
 using UnityEngine;
 
 namespace Entities
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] private float _speed;
-        [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private int _damage;
+        [SerializeField] private float _speed;
 
         private Tweener _moveTweener;
 
@@ -21,7 +20,9 @@ namespace Entities
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            col.GetComponent<IDamageable>().TakeDamage(_damage);
+            if(col.TryGetComponent(out Walker walker))
+                walker.TakeDamage(_damage);
+            
             Destroy(gameObject);
         }
     }

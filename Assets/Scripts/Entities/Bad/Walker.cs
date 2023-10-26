@@ -1,25 +1,26 @@
 using System;
 using Animation;
 using DG.Tweening;
-using Entities.Perfect;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
-using AnimationState = Spine.AnimationState;
 using Event = Spine.Event;
 
 namespace Entities.Bad
 {
-    public class Walker : MonoBehaviour, IDamageable
+    public class Walker : MonoBehaviour
     {
+        [SerializeField] private int _hp;
+        [SerializeField] private Collider2D _collider;
+        [SerializeField] private Transform _attackPoint;
+        [SerializeField] private int _damage;
+        [SerializeField] private LayerMask _targetLayer;
+        
+        [Header("Movement")]
         [SerializeField] private Transform _endPoint;
         [SerializeField] private float _speed;
-        [SerializeField] private int _hp;
-        [SerializeField] private int _damage;
-        [SerializeField] private Transform _attackPoint;
-        [SerializeField] private LayerMask _playerLayerMask;
-        [SerializeField] private Collider2D _collider;
 
+        [Header("Animation")]
         [SerializeField] private SkeletonAnimation _skeletonAnimation;
         [SerializeField, SpineAnimation] private string _walkAnimation;
         [SerializeField, SpineAnimation] private string _attackAnimation;
@@ -28,18 +29,30 @@ namespace Entities.Bad
         
         private Tweener _moveTweener;
         private Shooter _target;
+      
         private AnimationType _currentAnimationType;
-        private AnimationState.TrackEntryDelegate _currentCompleteAction;
-        private TrackEntry _currentTrack;
-        
+
         private void Start()
         {
             _skeletonAnimation.AnimationState.Event += OnAnimationEvent;
             StartMoving();
         }
-        
-        private void Update() => 
-            SetAnimationState(AnimationType.Action, TryGetAttackTarget(out _target), true);
+
+        private void FixedUpdate() => SetAnimationState(AnimationType.Action, TryGetAttackTarget(out _target), true);
+
+        public void TakeDamage(int damage)
+        {
+            _hp -= damage;
+            if (_hp <= 0)
+                Die();
+        }
+
+        private void Die()
+        {
+            _moveTweener?.Kill();
+            _collider.enabled = false;
+            SetAnimationState(AnimationType.Death, true, false, ()=> Destroy(gameObject));
+        }
 
         #region Animation
         
@@ -76,9 +89,6 @@ namespace Entities.Bad
 
         private void PlayAnimation(string animationName, bool loop, Action onComplete)
         {
-            if (_currentTrack != null)
-                _currentTrack.Complete -= _currentCompleteAction;
-            
             var te = _skeletonAnimation.AnimationState.SetAnimation(0, animationName, loop);
 
             if (loop || onComplete == null) 
@@ -103,39 +113,18 @@ namespace Entities.Bad
             _moveTweener = transform.DOMoveX(_endPoint.position.x, time);
             _skeletonAnimation.AnimationState.SetAnimation(0, _walkAnimation, true);
         }
-        
-        private bool TryGetAttackTarget(out Shooter target)
+
+        private void DealDamage() => _target.TakeDamage(_damage);
+
+        private bool TryGetAttackTarget(out Shooter shooter)
         {
-            target = null;
-            var col = Physics2D.OverlapPoint(_attackPoint.position, _playerLayerMask);
-            if(col == null)
+            shooter = null;
+            var col = Physics2D.OverlapPoint(_attackPoint.position, _targetLayer);
+            if (col == null)
                 return false;
 
-            target = col.GetComponent<Shooter>();
+            shooter = col.GetComponent<Shooter>();
             return true;
-        }
-        
-        private void DealDamage() => _target.TakeDamage(_damage);
-        
-        public void TakeDamage(int damage)
-        {
-            _hp -= damage;
-            Debug.Log("Damaged");
-            if (_hp <= 0)
-                PlayDeath();
-        }
-        private void PlayDeath()
-        {
-            _collider.enabled = false;
-            _moveTweener?.Kill();
-            SetAnimationState(AnimationType.Death, true, false, OnDeath);
-        }
-
-        private void OnDeath()
-        {
-            _moveTweener?.Kill();
-            _skeletonAnimation.AnimationState.Event += OnAnimationEvent;
-            Destroy(gameObject);
         }
     }
 }
