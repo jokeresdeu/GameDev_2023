@@ -1,6 +1,7 @@
 using System;
 using Animation;
 using DG.Tweening;
+using Entities.Perfect;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
@@ -9,7 +10,7 @@ using Event = Spine.Event;
 
 namespace Entities.Bad
 {
-    public class Walker : MonoBehaviour
+    public class Walker : MonoBehaviour, IDamageable
     {
         [SerializeField] private Transform _endPoint;
         [SerializeField] private float _speed;

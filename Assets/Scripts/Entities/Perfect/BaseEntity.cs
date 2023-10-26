@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
 using Animation;
-using Entities.Perfect;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
 using Event = Spine.Event;
 
-namespace Entities.Good
+namespace Entities.Perfect
 {
     public abstract class BaseEntity : MonoBehaviour, IDamageable
     {

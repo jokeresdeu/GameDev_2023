@@ -1,6 +1,6 @@
 using System;
 using Animation;
-using DG.Tweening;
+using Entities.Perfect;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
@@ -8,7 +8,7 @@ using Event = Spine.Event;
 
 namespace Entities.Bad
 {
-    public class Shooter : MonoBehaviour
+    public class Shooter : MonoBehaviour, IDamageable
     {
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private Transform _shootPoint;
@@ -32,7 +32,7 @@ namespace Entities.Bad
             _skeletonAnimation.AnimationState.Event += OnAnimationEvent;
         }
 
-        private void Update() => PlayAnimation(AnimationType.Action, EnemyInReach());
+        private void Update() => SetAnimationState(AnimationType.Action, EnemyInReach());
         
         #region Animation
         
@@ -48,7 +48,7 @@ namespace Entities.Bad
             return string.Empty;
         }
         
-        private void PlayAnimation(AnimationType animationType, bool enable, bool loop = false, Action onComplete = null)
+        private void SetAnimationState(AnimationType animationType, bool enable, bool loop = false, Action onComplete = null)
         {
             if (!enable)
             {

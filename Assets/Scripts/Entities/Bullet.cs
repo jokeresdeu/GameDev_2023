@@ -1,5 +1,5 @@
 using DG.Tweening;
-using Entities.Good;
+using Entities.Perfect;
 using UnityEngine;
 
 namespace Entities
@@ -21,7 +21,7 @@ namespace Entities
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            col.GetComponent<WalkerEntity>().TakeDamage(_damage);
+            col.GetComponent<IDamageable>().TakeDamage(_damage);
             Destroy(gameObject);
         }
     }
