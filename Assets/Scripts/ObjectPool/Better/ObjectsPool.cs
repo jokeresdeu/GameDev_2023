@@ -14,7 +14,17 @@ namespace ObjectPool.Better
         private void Start()
         {
             for (int i = 0; i < _bulletsToCreate; i++)
-                _freeObjects.Add(Instantiate(_prefab, transform).GetComponent<IPoolable>());
+            {
+                var createdObject = Instantiate(_prefab, transform).GetComponent<IPoolable>();
+                createdObject.GameObject.SetActive(false);
+                _freeObjects.Add(createdObject);
+            }
+        }
+
+        private void OnValidate()
+        {
+            if (_prefab.GetComponent<IPoolable>() == null)
+                _prefab = null;
         }
 
         public IPoolable GetBullet()

@@ -1,6 +1,7 @@
 using Animation;
 using ObjectPool.Good;
 using Projectiles;
+using Projectiles.Good;
 using Spine;
 using Spine.Unity;
 using UnityEngine;

@@ -40,9 +40,10 @@ namespace ObjectPool.Perfect
         {
             _freeObjects.Add(obj);
             _objectsInUse.Remove(obj);
+            obj.ResetPoolable();
             obj.ReturnRequested -= ReturnRequested;
             obj.GameObject.SetActive(false);
-            obj.Transform.SetParent(_container);
+            obj.GameObject.transform.SetParent(_container);
         }
 
         public void ReturnAllToPool()

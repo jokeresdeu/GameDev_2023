@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Projectiles;
+using Projectiles.Good;
 using UnityEngine;
 
 namespace ObjectPool.Good
@@ -15,7 +15,11 @@ namespace ObjectPool.Good
         private void Start()
         {
             for (int i = 0; i < _bulletsToCreate; i++)
-                _freeBullets.Add(Instantiate(_bulletPrefab, transform));
+            {
+                Bullet bullet = Instantiate(_bulletPrefab, transform);
+                bullet.gameObject.SetActive(false);
+                _freeBullets.Add(bullet);
+            }
         }
 
         public Bullet GetBullet()

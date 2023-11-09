@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using Animation;
 using ObjectPool.Better;
-using Projectiles;
+using Projectiles.Prefect;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
