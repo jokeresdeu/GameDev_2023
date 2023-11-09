@@ -1,4 +1,4 @@
-namespace Entities.Perfect
+namespace Entities
 {
     public interface IDamageable
     {

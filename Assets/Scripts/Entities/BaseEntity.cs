@@ -6,7 +6,7 @@ using Spine.Unity;
 using UnityEngine;
 using Event = Spine.Event;
 
-namespace Entities.Perfect
+namespace Entities
 {
     public abstract class BaseEntity : MonoBehaviour, IDamageable
     {

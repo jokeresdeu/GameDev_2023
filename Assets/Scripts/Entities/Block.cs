@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Entities.Perfect
+namespace Entities
 {
     public class Block : MonoBehaviour, IDamageable
     {

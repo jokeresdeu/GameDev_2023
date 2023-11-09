@@ -1,19 +1,19 @@
+using System.Collections.Generic;
 using Animation;
-using ObjectPool.Perfect;
+using ObjectPool.Better;
 using Projectiles;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
 using Event = Spine.Event;
 
-namespace Entities.Perfect
+namespace Entities.Great
 {
     public class ShooterEntity : BaseEntity
     {
-        [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private LayerMask _target;
         [SerializeField] private float _range;
-     
+        [SerializeField] private ObjectsPool _objectsPool;
         
         [SerializeField, SpineEvent] private string _attackEvent;
 
@@ -36,10 +36,10 @@ namespace Entities.Perfect
         
         private void Shoot()
         {
-            /*Bullet bullet = ObjectsPool.Instance.GetObject(_bulletPrefab);
+            Bullet bullet = _objectsPool.GetBullet() as Bullet;
             bullet.transform.position = ActionPoint.position;
             bullet.gameObject.SetActive(true);
-            bullet.MoveTo(_endReach);*/
+            bullet.MoveTo(_endReach);
         }
         
         private bool EnemyInReach() => Physics2D.OverlapArea(ActionPoint.position, _endReach, _target);
