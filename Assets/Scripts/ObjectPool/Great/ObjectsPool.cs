@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ObjectPool.Better
+namespace ObjectPool.Great
 {
     public class ObjectsPool : MonoBehaviour
     {
@@ -27,10 +27,10 @@ namespace ObjectPool.Better
                 _prefab = null;
         }
 
-        public IPoolable GetBullet()
+        public IPoolable GetObject()
         {
             IPoolable freeObject;
-            if (_freeObjects.Count > 1)
+            if (_freeObjects.Count > 0)
             {
                 freeObject = _freeObjects[0];
                 _freeObjects.RemoveAt(0);
@@ -45,20 +45,20 @@ namespace ObjectPool.Better
             return freeObject;
         }
 
-        public void ReturnAllBullets()
+        public void ReturnAllObject()
         {
             foreach(var usedObject in _objectsInUse)
-                ReturnBullet(usedObject);
+                ReturnObject(usedObject);
             _objectsInUse.Clear();
         }
 
         private void OnReturnRequested(IPoolable returnedObject)
         {
             _objectsInUse.Remove(returnedObject);
-            ReturnBullet(returnedObject);
+            ReturnObject(returnedObject);
         }
 
-        private void ReturnBullet(IPoolable returnedObject)
+        private void ReturnObject(IPoolable returnedObject)
         {
             returnedObject.ReturnRequested -= OnReturnRequested;
             returnedObject.GameObject.SetActive(false);

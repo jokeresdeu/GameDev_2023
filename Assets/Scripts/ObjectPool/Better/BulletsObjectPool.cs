@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Projectiles.Good;
 using UnityEngine;
 
-namespace ObjectPool.Good
+namespace ObjectPool.Better
 {
     public class BulletsObjectPool : MonoBehaviour
     {
@@ -25,7 +25,7 @@ namespace ObjectPool.Good
         public Bullet GetBullet()
         {
             Bullet bullet;
-            if (_freeBullets.Count > 1)
+            if (_freeBullets.Count > 0)
             {
                 bullet = _freeBullets[0];
                 _freeBullets.RemoveAt(0);

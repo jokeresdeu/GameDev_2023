@@ -1,5 +1,6 @@
 using Animation;
 using ObjectPool.Better;
+using ObjectPool.Great;
 using Projectiles.Prefect;
 using Spine;
 using Spine.Unity;
@@ -35,7 +36,7 @@ namespace Entities.Great
         
         private void Shoot()
         {
-            Bullet bullet = _objectsPool.GetBullet() as Bullet;
+            Bullet bullet = _objectsPool.GetObject() as Bullet;
             bullet.transform.position = ActionPoint.position;
             bullet.gameObject.SetActive(true);
             bullet.MoveTo(_endReach);

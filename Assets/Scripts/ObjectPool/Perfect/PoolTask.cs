@@ -24,12 +24,11 @@ namespace ObjectPool.Perfect
             if (_freeObjects.Count > 0)
             {
                 obj = _freeObjects.Last() as T;
-                obj.GameObject.SetActive(true);
                 _freeObjects.Remove(obj);
             }
             else
             {
-                obj =  Object.Instantiate(prefab);
+                obj = Object.Instantiate(prefab, _container);
             }
             _objectsInUse.Add(obj);
             obj.ReturnRequested += ReturnRequested;
@@ -38,8 +37,13 @@ namespace ObjectPool.Perfect
 
         private void ReturnRequested(IPoolable obj)
         {
-            _freeObjects.Add(obj);
             _objectsInUse.Remove(obj);
+            ReturnToPool(obj);
+        }
+
+        private void ReturnToPool(IPoolable obj)
+        {
+            _freeObjects.Add(obj);
             obj.ResetPoolable();
             obj.ReturnRequested -= ReturnRequested;
             obj.GameObject.SetActive(false);
@@ -49,22 +53,18 @@ namespace ObjectPool.Perfect
         public void ReturnAllToPool()
         {
             foreach (var obj in _objectsInUse)
-            {
-                ReturnRequested(obj);
-            }
+               ReturnToPool(obj);
+            
+            _objectsInUse.Clear();
         }
 
         public void ClearPool()
         {
             foreach (var obj in _objectsInUse)
-            {
                 Object.Destroy(obj.GameObject);
-            }
-
+            
             foreach (var obj in _freeObjects)
-            {
                 Object.Destroy(obj.GameObject);
-            }
         }
     }
 }

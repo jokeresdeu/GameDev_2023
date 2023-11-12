@@ -8,13 +8,23 @@ namespace ObjectPool.Perfect
         private static ObjectsPool _instance;
         public static ObjectsPool Instance => _instance ??= new ObjectsPool();
         
-        private readonly Dictionary<MonoBehaviour, PoolTask> _activePoolTasks;
+        private readonly Dictionary<GameObject, PoolTask> _activePoolTasks;
         private readonly Transform _objectPoolTransform;
 
         private ObjectsPool()
         {
-            _activePoolTasks = new Dictionary<MonoBehaviour, PoolTask>();
+            _activePoolTasks = new Dictionary<GameObject, PoolTask>();
             _objectPoolTransform = new GameObject().transform;
+        }
+        
+        public T GetObject<T>(T prefab) where T : MonoBehaviour, IPoolable 
+        {
+            if (!_activePoolTasks.TryGetValue(prefab.GameObject, out var poolTask))
+            {
+                AddTaskToPool(prefab, out poolTask);
+            }
+
+            return poolTask.GetFreeObject(prefab);
         }
 
         private void AddTaskToPool<T>(T prefab, out PoolTask poolTask) where T : MonoBehaviour, IPoolable
@@ -25,20 +35,9 @@ namespace ObjectPool.Perfect
             };
             container.transform.SetParent((_objectPoolTransform));
             poolTask = new PoolTask(container.transform);
-            _activePoolTasks.Add(prefab, poolTask);
+            _activePoolTasks.Add(prefab.GameObject, poolTask);
         }
-
-        public T GetObject<T>(T prefab) where T : MonoBehaviour, IPoolable 
-        {
-            
-            if (!_activePoolTasks.TryGetValue(prefab, out var poolTask))
-            {
-                AddTaskToPool(prefab, out poolTask);
-            }
-
-            return poolTask.GetFreeObject(prefab);
-        }
-
+        
         public void DisposeTask()
         {
             foreach (var poolTask in _activePoolTasks.Values)
