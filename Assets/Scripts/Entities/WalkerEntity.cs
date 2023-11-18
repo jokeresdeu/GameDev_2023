@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Animation;
 using DG.Tweening;
 using Spine;
@@ -21,13 +23,25 @@ namespace Entities
         private IDamageable _target;
         private Tweener _moveTweener;
 
-        private void FixedUpdate()
+        private void Start() => Initialize();
+
+        public override void ResetPoolable()
         {
-            var action = TryGetAttackTarget(out _target);
-            SetAnimationState(AnimationType.Action, action, true);
-            if(action)
-                _moveTweener?.Kill();
-        } 
+            base.ResetPoolable();
+            _collider.enabled = true;
+        }
+
+        protected override IEnumerator ActionCoroutine()
+        {
+            while (true)
+            {
+                var action = TryGetAttackTarget(out _target);
+                SetAnimationState(AnimationType.Action, action, true);
+                if(action)
+                    _moveTweener?.Kill();
+                yield return new WaitForSeconds(Time.fixedDeltaTime);
+            }
+        }
 
         private bool TryGetAttackTarget(out IDamageable target)
         {
@@ -57,11 +71,9 @@ namespace Entities
 
         protected override void Death()
         {
-            SetAnimationState(AnimationType.Death, true, false, OnDeath);
+            SetAnimationState(AnimationType.Death, true, false, base.Death);
             _collider.enabled = false;
             _moveTweener?.Kill();
         }
-        
-       private void OnDeath() => Destroy(gameObject);
     }
 }
