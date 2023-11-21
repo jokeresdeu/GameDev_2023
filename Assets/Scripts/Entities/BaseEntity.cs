@@ -18,8 +18,9 @@ namespace Entities
         [SerializeField] private SkeletonAnimation _skeleton;
         [SerializeField] private List<AnimationTypeName> _animationStates;
         [SerializeField, SpineAnimation] private string _idleAnimation;
-
+        
         private MeshRenderer _meshRenderer;
+        
         private AnimationType _currentAnimationType;
         private int _currentHp;
         
@@ -39,8 +40,7 @@ namespace Entities
             PlayIdle();
         }
 
-        public void SetSortingOrder(int sortingOrder) => 
-            _meshRenderer.sortingOrder = sortingOrder;
+        public void SetSortingOrder(int order) => _meshRenderer.sortingOrder = order;
 
         public virtual void TakeDamage(int damage)
         {

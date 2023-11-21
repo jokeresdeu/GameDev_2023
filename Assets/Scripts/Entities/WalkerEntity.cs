@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Animation;
 using DG.Tweening;

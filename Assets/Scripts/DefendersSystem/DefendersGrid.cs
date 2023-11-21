@@ -11,22 +11,21 @@ namespace DefendersSystem
         [SerializeField] private int _horizontalCellsCount;
         [SerializeField] private int _verticalCellsCount;
         
-        [Header("SlotsSettings")]
         [SerializeField] private SpriteRenderer _slotSprite;
         [SerializeField] private Color _selectedColor;
         [SerializeField] private Color _nearSelectedColor;
-
+        
         private Vector2 _cellSize;
         private Vector2 _startPos;
         
         private List<DefenderSlot> _slots;
-        
-        public void Initalize()
+
+        public void Initialize()
         {
             CalculateGrid();
             CreateSlots();
         }
-
+        
         private void CalculateGrid()
         {
             _startPos = transform.position;
@@ -37,7 +36,7 @@ namespace DefendersSystem
         private void CreateSlots()
         {
             _slots = new List<DefenderSlot>();
-            var cellsCount = (_verticalCellsCount + 1) * (_horizontalCellsCount + 1);
+            int cellsCount = (_verticalCellsCount + 1) * (_horizontalCellsCount + 1);
             for (var y = 0; y < _verticalCellsCount; y++)
             {
                 for (var x = 0; x < _horizontalCellsCount; x++)
@@ -56,25 +55,27 @@ namespace DefendersSystem
             defenderSlot = null;
             foreach (var slot in _slots)
             {
-                if (!PosInsideSlot(slot, worldPos)) continue;
+                if (!PosInsideSlot(slot, worldPos)) 
+                    continue;
                 defenderSlot = slot;
                 return true;
             }
 
             return false;
         }
-
-        public void ShowSelection(Vector2 position)
+        
+        public void ShowSelection(DefenderSlot defenderSlot)
         {
             foreach (var slot in _slots)
             {
-                if (Math.Abs(slot.StartPosition.x - position.x) < 0.1 && Math.Abs(slot.StartPosition.y - position.y) < 0.1)
+                if (slot == defenderSlot)
                 {
                     slot.ShowCell(_selectedColor);
                     continue;
                 }
                 
-                if (Math.Abs(slot.StartPosition.x - position.x) < 0.1 || Math.Abs(slot.StartPosition.y - position.y) < 0.1)
+                if (Math.Abs(slot.StartPosition.x - defenderSlot.StartPosition.x) < 0.1 
+                    || Math.Abs(slot.StartPosition.y - defenderSlot.StartPosition.y) < 0.1)
                 {
                     slot.ShowCell(_nearSelectedColor);
                     continue;
@@ -83,11 +84,11 @@ namespace DefendersSystem
                 slot.HideCell();
             }
         }
-        
+
         public void HideSelection()
         {
-            foreach (var cell in _slots)
-                cell.HideCell();
+            foreach(DefenderSlot slot in _slots)
+                slot.HideCell();
         }
         
         private bool PosInsideSlot(DefenderSlot defenderSlot, Vector2 worldPos)
@@ -108,9 +109,7 @@ namespace DefendersSystem
                 return;
             }
             
-            _startPos = transform.position;
-            _cellSize.x = _gridSize.x / _horizontalCellsCount;
-            _cellSize.y = _gridSize.y / _verticalCellsCount;
+            CalculateGrid();
             _cellsPositions = new Vector2[_horizontalCellsCount, _verticalCellsCount];
             for (var y = 0; y < _verticalCellsCount; y++)
             {

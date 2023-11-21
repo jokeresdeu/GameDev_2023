@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Animation;
 using ObjectPool;
@@ -22,6 +23,12 @@ namespace Entities
         {
             _endReach = new Vector2(endReach.x, ActionPoint.position.y);
             Initialize();
+        }
+
+        private void FixedUpdate()
+        {
+            if(!gameObject.activeInHierarchy)
+                return;
         }
 
         protected override IEnumerator ActionCoroutine()

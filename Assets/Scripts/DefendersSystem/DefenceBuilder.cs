@@ -1,94 +1,89 @@
 using Entities;
-using Extensions.UI;
-using PlayerInput.InputController;
-using UnityEngine;
 using ObjectPool;
+using UnityEngine;
 
 namespace DefendersSystem
 {
     public class DefenceBuilder : MonoBehaviour
     {
-        [SerializeField] private EditorInput _input;
         [SerializeField] private DefendersGrid _defendersGrid;
-        [SerializeField] private Clicker _defenderSelector;
-        [SerializeField] private Clicker _removeDefenderSelector;
         [SerializeField] private ShooterEntity _baseEntity;
         [SerializeField] private SpriteRenderer _pointer;
         [SerializeField] private Transform _endReachPoint;
-        
-        private InteractionType _interactionType;
 
+        private InteractionType _interactionType;
+        private Camera _camera;
+        
         private void Start()
         {
-            _defendersGrid.Initalize();
-            _input.Initialize();
-            _input.Enabled = true;
-            _input.ClickReleased += OnClickReleased;
-            _input.Dragged += OnDragged;
-            _defenderSelector.Clicked += OnDefenderSelected;
-            _defenderSelector.DragStarted += OnDefenderSelected;
-            _removeDefenderSelector.Clicked += OnRemoveDefenderSelected;
-            _removeDefenderSelector.DragStarted += OnRemoveDefenderSelected;
-        }
-        
-        private void OnDefenderSelected()
-        {
-            _interactionType = InteractionType.Build;
-            _defenderSelector.Interactable = false;
-            _removeDefenderSelector.Interactable = false;
+            _defendersGrid.Initialize();
+            _camera = Camera.main;
         }
 
-        private void OnRemoveDefenderSelected()
+        private void Update()
         {
-            _interactionType = InteractionType.Remove;
-            _defenderSelector.Interactable = false;
-            _removeDefenderSelector.Interactable = false;
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+                _interactionType = InteractionType.Build;
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+                _interactionType = InteractionType.Remove;
+
+            if (_interactionType == InteractionType.None)
+                return;
+
+            Vector2 pos = _camera.ScreenToWorldPoint(Input.mousePosition);
+            if (!_defendersGrid.TryGetDefenderSlot(pos, out DefenderSlot defenderSlot))
+            {
+                _pointer.gameObject.SetActive(false);
+                _defendersGrid.HideSelection();
+                return;
+            }
+            
+            _pointer.gameObject.SetActive(true);
+            if (Input.GetButtonUp("Fire1"))
+            {
+                OnClickReleased(defenderSlot);
+                return;
+            }
+
+            OnDragged(pos, defenderSlot);
         }
 
-        private void OnDragged(Vector2 pos)
+        private void OnDragged(Vector3 pos, DefenderSlot defenderSlot)
         {
             if(_interactionType == InteractionType.None)
                 return;
             
-            _pointer.gameObject.SetActive(!_input.IsPointerOverUI());
             _pointer.transform.position = pos;
-            
-            if(!_defendersGrid.TryGetDefenderSlot(pos, out DefenderSlot defenderSlot))
-                return;
-            
             if (_interactionType == InteractionType.Remove && !defenderSlot.IsFree)
             {
-                _defendersGrid.ShowSelection(defenderSlot.StartPosition);
+                _defendersGrid.ShowSelection(defenderSlot);
                 return;
             }
 
-            if (defenderSlot.IsFree)
+            if (defenderSlot.IsFree && _interactionType == InteractionType.Build)
             {
-                _defendersGrid.ShowSelection(defenderSlot.StartPosition);
+                _defendersGrid.ShowSelection(defenderSlot);
                 return;
             }
             
             _defendersGrid.HideSelection();
         }
-        
-        private void OnClickReleased(Vector2 pos)
+
+        private void OnClickReleased(DefenderSlot defenderSlot)
         {
-            if (_defendersGrid.TryGetDefenderSlot(pos, out DefenderSlot defenderSlot))
+            switch (_interactionType)
             {
-                switch (_interactionType)
-                {
-                    case InteractionType.Build:
-                        BuildDefender(defenderSlot);
-                        break;
-                    case InteractionType.Remove:
-                        defenderSlot.RemoveDefender();
-                        break;
-                }
+                case InteractionType.Build:
+                    BuildDefender(defenderSlot);
+                    break;
+                case InteractionType.Remove:
+                    defenderSlot.RemoveDefender();
+                    break;
             }
-            
             Reset();
         }
-
+        
         private void BuildDefender(DefenderSlot defenderSlot)
         {
             if(!defenderSlot.IsFree)
@@ -103,11 +98,9 @@ namespace DefendersSystem
         {
             _defendersGrid.HideSelection();
             _pointer.gameObject.SetActive(false);
-            _defenderSelector.Interactable = true;
-            _removeDefenderSelector.Interactable = true;
             _interactionType = InteractionType.None;
         }
-        
+
         private enum InteractionType
         {
             None = 0,
