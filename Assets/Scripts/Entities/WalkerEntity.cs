@@ -62,8 +62,11 @@ namespace Entities
 
         protected override void OnAnimationEvent(TrackEntry _, Event e)
         {
-            if(e.Data.Name == _attackEvent)
+            Debug.Log("OnAnimationEvent in walker");
+            if(e.Data.Name == _attackEvent){
                 DealDamage();
+                Debug.Log("OnAnimationEvent in walker _attackEvent");
+            }
         }
       
         private void DealDamage() => _target.TakeDamage(_damage);

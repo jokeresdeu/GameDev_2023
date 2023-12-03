@@ -17,6 +17,7 @@ namespace DefendersSystem
         private void Start()
         {
             _defendersGrid.Initialize();
+            
             _camera = Camera.main;
         }
 

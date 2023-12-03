@@ -42,8 +42,11 @@ namespace Entities
 
         protected override void OnAnimationEvent(TrackEntry _, Event e)
         {
-            if(e.Data.Name == _attackEvent)
+            Debug.Log("OnAnimationEvent in shooter");
+            if(e.Data.Name == _attackEvent){
+                Debug.Log("OnAnimationEvent in shooter _attackEvent");
                 Shoot();
+            }
         }
         
         private void Shoot()

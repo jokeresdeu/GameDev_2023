@@ -26,6 +26,7 @@ namespace Entities
         
         private Coroutine _actionCoroutine;
         
+        // point of bullet start position
         [field: SerializeField] protected Transform ActionPoint { get; set; }
         
         public GameObject GameObject => gameObject;
